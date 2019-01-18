@@ -60,10 +60,17 @@ export default theme => ({
     '.ReactTable .rt-tbody .rt-td': {
       textAlign: 'center'
     },
-    '.modal.show .modal-dialog': {
-      minHeight: '100vh',
-      display: 'flex',
+    '.modal.show': {
+      display: 'flex !important',
       alignItems: 'center'
+    },
+    '.modal.show .modal-dialog': {
+      '@media(min-width: 576px)': {
+        minWidth: 500
+      }
+    },
+    '.invalid-feedback': {
+      fontWeight: 400
     }
   }
 })

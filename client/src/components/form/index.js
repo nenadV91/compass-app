@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {FormGroup, Input, Button} from 'reactstrap';
-import {Spinner, Label} from 'reactstrap';
+import {Spinner, Label, FormFeedback} from 'reactstrap';
 import injectStyles from 'react-jss';
 import styles from './index.style';
 import _ from 'lodash';
@@ -10,7 +10,8 @@ const initial = {
     surname: "",
     city: "",
     address: "",
-    phone: ""
+    phone: "",
+    errors: []
   }
 
 class Form extends Component {
@@ -21,7 +22,7 @@ class Form extends Component {
 
     if(type === "update" && selected) {
       let values = _.pick(selected, _.keys(initial));
-      this.setState({...values})
+      this.setState({...values, errors: []})
     } else {
       this.setState({...initial})
     }
@@ -29,28 +30,59 @@ class Form extends Component {
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      errors: []
     })
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleSubmit(this.state)
+
+    if(!this.state.name) {
+      return this.setError('name', 'Name field is required.')
+    }
+
+    if(!this.state.surname) {
+      return this.setError('surname', 'Surname field is required.')
+    }
+
+    let {errors} = this.state;
+
+    if(errors && !errors.length) {
+      this.props.handleSubmit(this.state)
       .then(res => {
         this.setState({...initial})
       }).catch(err => {
         console.log(err)
       })
+    }
+  }
+
+  setError = (field, message) => {
+    this.setState(({errors}) => ({
+      errors: [...errors, {field, message}]
+    }))
+  }
+
+  getError = field => {
+    if(!this.state.errors) return null
+    return this.state.errors.find(error => error.field === field)
   }
 
   renderFields = () => {
-    let {fields} = this.props;
+    let {fields, classes} = this.props;
 
     return fields.map(field => {
+      const error = this.getError(field.name);
+
       return <FormGroup key={field.name}>
-        <Label for={field.name}>{field.label}</Label>
+        <Label className={classes.label} for={field.name}>
+          <span>{field.label}</span>
+          {field.required && <sup className="required">*</sup>}
+        </Label>
 
         <Input
+        invalid={!!error}
         id={field.name}
         disabled={this.props.loading}
         value={this.state[field.name]}
@@ -58,12 +90,14 @@ class Form extends Component {
         type={field.type || 'text'}
         onChange={this.handleChange}
         placeholder={field.placeholder}/>
+
+        {error && <FormFeedback>{error.message}</FormFeedback>}
       </FormGroup>
     })
   }
 
   render() {
-    let {classes, loading} = this.props;
+    let {classes, loading, type} = this.props;
     let spinnerStyle = {
       borderWidth: 2,
       width: '1rem',
@@ -75,11 +109,21 @@ class Form extends Component {
         {this.renderFields()}
 
         <div className={classes.controls}>
-          <Button
-          size="sm"
-          color='primary'
-          disabled={loading}>
-          Submit</Button>
+          <div>
+            <Button
+            size="sm"
+            color='primary'
+            disabled={loading}>
+            Submit</Button>
+
+            {type === 'update' && 
+            <Button
+            size="sm"
+            color='secondary'
+            onClick={this.props.handleCancel}
+            disabled={loading}>
+            Cancel</Button>}
+          </div>
 
           {loading && <Spinner 
           style={spinnerStyle}

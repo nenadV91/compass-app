@@ -1,11 +1,13 @@
 export default [{
   name: 'name',
   label: 'Name',
-  placeholder: 'Person name...'
+  placeholder: 'Person name...',
+  required: true
 }, {
   name: 'surname',
   label: 'Surname',
-  placeholder: 'Person surname...'
+  placeholder: 'Person surname...',
+  required: true
 }, {
   name: 'city',
   label: 'City',

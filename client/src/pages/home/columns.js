@@ -45,6 +45,7 @@ export default ({
   accessor: 'phone'
 }, {
   Header: 'Remove',
+  width: 75,
   Cell: props => {
     return <ControlOption 
     classes={classes}
@@ -53,6 +54,7 @@ export default ({
   }
 }, {
   Header: 'Edit',
+  width: 75,
   Cell: props => {
     return <ControlOption 
     classes={classes}

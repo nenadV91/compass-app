@@ -23,6 +23,12 @@ class UpdateModal extends Component {
     }
   }
 
+  handleCancel = (e) => {
+    e.preventDefault();
+    this.props.closeModal()
+    this.props.unselectPerson()
+  }
+
   render() {
     let {classes, loaders} = this.props;
 
@@ -40,6 +46,7 @@ class UpdateModal extends Component {
           type="update"
           loading={loaders.update}
           selected={this.props.selected}
+          handleCancel={this.handleCancel}
           handleSubmit={this.handleSubmit}
           fields={fields} />
         </ModalBody>

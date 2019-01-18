@@ -31,6 +31,9 @@ class HomeContent extends Component {
 
     return <div>
       <ReactTable 
+      NoDataComponent={() => <div className="rt-noData">
+        <div >No users found</div>
+      </div>}
       columns={columns({
         classes,
         removePerson,

@@ -1,4 +1,3 @@
-- Update
-  - options
-    - Update from form
-    - Update from table
+- Snackbars
+- Readme files
+- Push to github
