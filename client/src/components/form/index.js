@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {FormGroup, Input, Button} from 'reactstrap';
-import {Spinner} from 'reactstrap';
+import {Spinner, Label} from 'reactstrap';
 import injectStyles from 'react-jss';
 import styles from './index.style';
 
@@ -35,7 +35,10 @@ class Form extends Component {
 
     return fields.map(field => {
       return <FormGroup key={field.name}>
+        <Label for={field.name}>{field.label}</Label>
+
         <Input
+        id={field.name}
         disabled={this.props.loading}
         value={this.state[field.name]}
         name={field.name}

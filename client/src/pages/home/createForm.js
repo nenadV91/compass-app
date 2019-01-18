@@ -15,9 +15,9 @@ class CreateForm extends Component {
     let {classes, loaders} = this.props;
 
     return (
-      <div>
+      <div className={classes.root}>
         <div className={classes.titleWrapper}>
-          <h2 className={classes.title}>Create user</h2>
+          <h2 className={classes.title}>Create</h2>
         </div>
 
         <Form 

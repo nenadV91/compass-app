@@ -1,11 +1,11 @@
 export default [{
   name: 'name',
   label: 'Name',
-  placeholder: 'Name...'
+  placeholder: 'Person name...'
 }, {
   name: 'surname',
   label: 'Surname',
-  placeholder: 'Surname...'
+  placeholder: 'Person surname...'
 }, {
   name: 'city',
   label: 'City',
@@ -17,5 +17,5 @@ export default [{
 }, {
   name: 'phone',
   label: 'Phone',
-  placeholder: 'Phone...'
+  placeholder: 'Phone number...'
 }]

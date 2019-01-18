@@ -13,21 +13,25 @@ textarea::-webkit-input-placeholder,
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #acacac !important;
   font-size: 0.85rem;
+  font-weight: 300;
 }
 textarea::-moz-placeholder,
 input::-moz-placeholder { /* Firefox 19+ */
   color: #acacac !important;
   font-size: 0.85rem;
+  font-weight: 300;
 }
 textarea:-ms-input-placeholder,
 input:-ms-input-placeholder { /* IE 10+ */
   color: #acacac !important;
   font-size: 0.85rem;
+  font-weight: 300;
 }
 textarea:-moz-placeholder,
 input:-moz-placeholder { /* Firefox 18- */
   color: #acacac !important;
   font-size: 0.85rem;
+  font-weight: 300;
 }
 
 input.form-control,
