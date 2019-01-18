@@ -5,11 +5,13 @@ import styles from 'assets/jss/global';
 
 import Navbar from 'components/navbar';
 import Home from 'pages/home';
+import NotFound from 'pages/notFound';
 import UpdateModal from './modal';
 
 import {connect} from 'react-redux';
 import {toggleModal} from 'redux/actions';
- import {ToastContainer} from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
+import {withRouter} from 'react-router-dom';
 
 class App extends Component {
   render() {
@@ -33,6 +35,7 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </div>
     );
@@ -44,4 +47,5 @@ const withStyles = injectStyles(styles)(App)
 const withRedux = connect(({modal}) => {
   return {modal}
 }, {toggleModal})(withStyles)
-export default withRedux;
+const WithRouter = withRouter(withRedux)
+export default WithRouter;

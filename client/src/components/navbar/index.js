@@ -10,7 +10,8 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  Container
 } from 'reactstrap';
 
 class MyNavbar extends Component {
@@ -34,16 +35,18 @@ class MyNavbar extends Component {
 
     return (
       <Navbar className={classes.root} fixed="top" color="light" light expand="md">
-        <NavbarBrand tag={Link} to="/">Compass</NavbarBrand>
-        <NavbarToggler className={classes.toggler} onClick={this.toggle} />
+        <Container>
+          <NavbarBrand tag={Link} to="/">Compass</NavbarBrand>
+          <NavbarToggler className={classes.toggler} onClick={this.toggle} />
 
-        <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink to="/" tag={Link}>Home</NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink to="/" tag={Link}>Home</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Container>
       </Navbar>
     );
   }

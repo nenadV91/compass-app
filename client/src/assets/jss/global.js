@@ -44,10 +44,10 @@ export default theme => ({
       }
     },
     '.text-green': {
-      color: '#2CC66C' 
+      color: theme.colors.green.main
     },
     '.text-red': {
-      color:  '#F74242'
+      color:  theme.colors.red.main
     },
     '.text-primary': {
       color: [theme.colors.primary.main, '!important']
@@ -63,6 +63,9 @@ export default theme => ({
       '@media(min-width: 576px)': {
         minWidth: 500
       }
+    },
+    '.navbar-light .navbar-brand': {
+      fontSize: '1rem'
     },
     '.invalid-feedback': {
       fontWeight: 400
@@ -81,6 +84,11 @@ export default theme => ({
     },
     '.Toastify__toast--error': {
       backgroundColor: theme.colors.red.main
+    },
+    '@media(min-width: 1200px)': {
+      '.container': {
+        minWidth: '1300px'
+      }
     }
   }
 })

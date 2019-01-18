@@ -31,7 +31,10 @@ class HomeContent extends Component {
 
     return <div>
       <ReactTable 
-      NoDataComponent={() => <div className="rt-noData">
+      minRows={10}
+      defaultPageSize={15}
+      NoDataComponent={() => 
+        <div className="rt-noData">
         <div >No users found</div>
       </div>}
       columns={columns({
@@ -49,15 +52,14 @@ class HomeContent extends Component {
 
     return (
       <div className={classes.root}>
-        <Container fluid className={classes.container}>
+        <Container className={classes.container}>
           <Row className={classes.contentRow}>
-            <Col sm={12} md={{size: 4}} lg={{size: 4}}>
+            <Col sm={12} md={{size: 4}}>
               <CreateForm />
             </Col>
 
-            <Col sm={12} md={{size: 8}} lg={{size: 8}}>
+            <Col sm={12} md={{size: 8}}>
               <Header persons={this.props.persons} />
-
               <div className={classes.content}>
                 {this.renderContent()}
               </div>

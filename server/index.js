@@ -36,10 +36,10 @@ app.use('/person', personRoutes);
 
 
 // Set directory for static files, catch all routes and serve index.html
-app.use(express.static(path.resolve(__dirname, '..', 'client', 'build')));
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
-})
+if(NODE_ENV !== 'development') {
+  app.use(express.static(path.resolve(__dirname, '..', 'client', 'build')));
+  app.get('*', (req, res) => res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html')))
+}
 
 
 // Starting the server
