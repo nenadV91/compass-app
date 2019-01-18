@@ -35,11 +35,6 @@ export default theme => ({
         borderColor: [theme.colors.primary.main, '!important']
       },
     },
-    // '.App': {
-    //   display: 'flex',
-    //   minHeight: '100vh',
-    //   width: '100%'
-    // },
     '.btn.btn-white': {
       background: 'white',
       color: theme.colors.text.body1,
@@ -71,6 +66,21 @@ export default theme => ({
     },
     '.invalid-feedback': {
       fontWeight: 400
+    },
+    '.Toastify__toast': {
+      minHeight: 55,
+      alignItems: 'center',
+      paddingLeft: 15,
+      paddingRight: 15,
+    },
+    '.Toastify__close-button': {
+      alignSelf: 'center'
+    },
+    '.Toastify__toast--success': {
+      backgroundColor: theme.colors.green.main
+    },
+    '.Toastify__toast--error': {
+      backgroundColor: theme.colors.red.main
     }
   }
 })

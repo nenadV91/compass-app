@@ -5,6 +5,7 @@ import { ThemeProvider } from 'react-jss';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import * as serviceWorker from './serviceWorker';
+import 'react-toastify/dist/ReactToastify.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-table/react-table.css'
 import 'assets/css/style.css';

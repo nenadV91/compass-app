@@ -6,6 +6,12 @@ const colors = {
     dark1: '#6852d1',
     light1: '#9f8bfc'
   },
+  green: {
+    main: '#43a047'
+  },
+  red: {
+    main: '#d32f2f'
+  },
   text: {
     body1: '#5f5e5e',
     body2: '#828282',

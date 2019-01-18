@@ -1,6 +1,7 @@
 import moment from 'moment';
 import React from 'react';
 import {Button} from 'reactstrap';
+ import {toast} from 'react-toastify';
 
 
 const ControlOption = ({iconName, classes, handleClick}) => {
@@ -49,7 +50,13 @@ export default ({
   Cell: props => {
     return <ControlOption 
     classes={classes}
-    handleClick={() => removePerson(props.original.id)}
+    handleClick={() => {
+      removePerson(props.original.id)
+      .then(res => {
+        const message = `${props.original.name} removed from users.`
+        toast.error(message)
+      })
+    }}
     iconName='fa-trash-o' />
   }
 }, {

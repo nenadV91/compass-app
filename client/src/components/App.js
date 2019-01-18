@@ -9,15 +9,27 @@ import UpdateModal from './modal';
 
 import {connect} from 'react-redux';
 import {toggleModal} from 'redux/actions';
+ import {ToastContainer} from 'react-toastify';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Navbar />
+
         <UpdateModal 
         toggleModal={this.props.toggleModal}
         isOpen={this.props.modal} />
+
+        <ToastContainer
+        position="bottom-left"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        rtl={false}
+        closeOnClick
+        pauseOnVisibilityChange
+        pauseOnHover />
 
         <Switch>
           <Route exact path="/" component={Home} />

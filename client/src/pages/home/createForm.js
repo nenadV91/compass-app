@@ -5,10 +5,17 @@ import styles from './createForm.style';
 import formFields from 'components/fields/form';
 import {addPerson} from 'redux/actions';
 import {connect} from 'react-redux';
+ import {toast} from 'react-toastify';
 
 class CreateForm extends Component {
   handleSubmit = data => {
     return this.props.addPerson(data)
+      .then(res => {
+        const message = `${res.name} added to users.`
+        toast.success(message);
+        return Promise.resolve(res)
+      })
+      .catch(err => console.log(err))
   }
 
   render() {

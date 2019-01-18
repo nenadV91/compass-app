@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import Form from 'components/form';
 import fields from 'components/fields/form';
 import {unselectPerson, updatePerson, closeModal} from 'redux/actions';
+ import {toast} from 'react-toastify';
 
 class UpdateModal extends Component {
   handleSubmit = (data) => {
@@ -15,6 +16,8 @@ class UpdateModal extends Component {
       let {id} = selected;
       return this.props.updatePerson({id, data})
         .then(res => {
+          const message = `${res.name} account info updated.`
+          toast.success(message);
           this.props.closeModal()
           this.props.unselectPerson()
           return Promise.resolve(res)
