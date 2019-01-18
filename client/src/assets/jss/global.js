@@ -59,6 +59,11 @@ export default theme => ({
     },
     '.ReactTable .rt-tbody .rt-td': {
       textAlign: 'center'
+    },
+    '.modal.show .modal-dialog': {
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center'
     }
   }
 })

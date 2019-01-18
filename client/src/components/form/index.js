@@ -3,6 +3,7 @@ import {FormGroup, Input, Button} from 'reactstrap';
 import {Spinner, Label} from 'reactstrap';
 import injectStyles from 'react-jss';
 import styles from './index.style';
+import _ from 'lodash';
 
 const initial = {
     name: "",
@@ -13,7 +14,18 @@ const initial = {
   }
 
 class Form extends Component {
-  state = {...initial}
+  state = {}
+
+  componentWillMount = () => {
+    let {type, selected} = this.props;
+
+    if(type === "update" && selected) {
+      let values = _.pick(selected, _.keys(initial));
+      this.setState({...values})
+    } else {
+      this.setState({...initial})
+    }
+  }
 
   handleChange = e => {
     this.setState({
@@ -23,11 +35,12 @@ class Form extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleSubmit(this.state).then(res => {
-      this.setState({...initial})
-    }).catch(err => {
-      console.log(err)
-    })
+    this.props.handleSubmit(this.state)
+      .then(res => {
+        this.setState({...initial})
+      }).catch(err => {
+        console.log(err)
+      })
   }
 
   renderFields = () => {

@@ -3,7 +3,7 @@ const _ = require('lodash');
 
 
 function getAll() {
-  return Person.find({})
+  return Person.find({}).sort({"createdDate": -1})
 }
 
 

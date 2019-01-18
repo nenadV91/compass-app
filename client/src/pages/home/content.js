@@ -7,12 +7,13 @@ import styles from './content.style';
 import columns from './columns';
 import Header from './header';
 import CreateForm from './createForm';
-import {removePerson} from 'redux/actions';
+import {removePerson, toggleModal, selectPerson} from 'redux/actions';
 import {connect} from 'react-redux';
 
 class HomeContent extends Component {
   renderContent = () => {
-    let {persons, classes, loaders, removePerson} = this.props;
+    let {persons, classes, loaders} = this.props;
+    let {removePerson, toggleModal, selectPerson} = this.props;
 
     let spinnerStyle = {
       width: '3rem', 
@@ -32,7 +33,9 @@ class HomeContent extends Component {
       <ReactTable 
       columns={columns({
         classes,
-        removePerson
+        removePerson,
+        toggleModal,
+        selectPerson
       })}
       data={persons} />
     </div>
@@ -64,5 +67,5 @@ class HomeContent extends Component {
 }
 
 const withStyles = injectStyles(styles)(HomeContent)
-const withRedux = connect(null, {removePerson})(withStyles)
+const withRedux = connect(null, {removePerson, toggleModal, selectPerson})(withStyles)
 export default withRedux

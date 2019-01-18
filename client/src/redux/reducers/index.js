@@ -1,11 +1,13 @@
 import {combineReducers} from 'redux';
 import personsReducer from './personsReducer';
-import dialogReducer from './dialogReducer';
+import modalReducer from './modalReducer';
 import loadersReducer from './loadersReducer';
+import selectedReducer from './selectedReducer';
 
 
 export default combineReducers({
   persons: personsReducer,
-  dialog: dialogReducer,
   loaders: loadersReducer,
+  modal: modalReducer,
+  selected: selectedReducer
 });

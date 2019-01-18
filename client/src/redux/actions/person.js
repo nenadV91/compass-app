@@ -5,6 +5,9 @@ import {
   PERSON_ADD_REQUESTED,
   PERSON_ADD_SUCCEEDED,
   PERSON_ADD_FAILED,
+  PERSON_UPDATE_REQUESTED,
+  PERSON_UPDATE_SUCCEEDED,
+  PERSON_UPDATE_FAILED,
   PERSON_REMOVE,
   PERSON_SELECT,
   PERSON_UNSELECT
@@ -43,6 +46,22 @@ export const addPerson = (data) => {
 }
 
 
+export const updatePerson = ({id, data}) => {
+  return async dispatch => {
+    dispatch({type: PERSON_UPDATE_REQUESTED})
+
+    try {
+      const res = await axios.patch(`/person/${id}`, data);
+      dispatch({type: PERSON_UPDATE_SUCCEEDED, payload: res.data})
+      return res.data;
+    } catch(error) {
+      dispatch({type: PERSON_UPDATE_FAILED});
+      throw new Error(error.response.data.message)
+    }
+  }
+}
+
+
 export const removePerson = (id) => {
   return async dispatch => {
     await axios.delete(`/person/${id}`);
@@ -51,11 +70,11 @@ export const removePerson = (id) => {
 }
 
 
-// export const selectClient = client => {
-//   return {type: CLIENT_SELECT, payload: client}
-// }
+export const selectPerson = (data) => {
+  return {type: PERSON_SELECT, payload: data}
+}
 
 
-// export const unselectClient = client => {
-//   return {type: CLIENT_UNSELECT}
-// }
+export const unselectPerson = () => {
+  return {type: PERSON_UNSELECT}
+}

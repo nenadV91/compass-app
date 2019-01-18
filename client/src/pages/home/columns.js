@@ -18,7 +18,9 @@ const ControlOption = ({iconName, classes, handleClick}) => {
 
 export default ({
   classes,
-  removePerson
+  removePerson,
+  toggleModal,
+  selectPerson
 }) => [{
   Header: 'Name',
   accessor: 'name'
@@ -54,7 +56,10 @@ export default ({
   Cell: props => {
     return <ControlOption 
     classes={classes}
-    handleClick={() => console.log(props.original.id)}
+    handleClick={() => {
+      toggleModal()
+      selectPerson(props.original)
+    }}
     iconName='fa-pencil' />
   }
 }]

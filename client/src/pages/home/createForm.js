@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Form from 'components/form';
 import injectStyles from 'react-jss';
 import styles from './createForm.style';
-import formFields from './formFields';
+import formFields from 'components/fields/form';
 import {addPerson} from 'redux/actions';
 import {connect} from 'react-redux';
 
