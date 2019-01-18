@@ -15,7 +15,9 @@ class CreateForm extends Component {
         toast.success(message);
         return Promise.resolve(res)
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        toast.error(`Something went wrong`);
+      })
   }
 
   render() {

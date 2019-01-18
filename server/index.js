@@ -17,8 +17,18 @@ const {
 } = process.env;
 
 
+if(!DB_HOST) {
+  throw new Error('Please provide database host name.')
+}
+
+if(!DB_NAME) {
+  throw new Error('Please provide database name.')
+}
+
+
 // Mongodb connection
 const mongoURI = `mongodb://${DB_HOST}/${DB_NAME}`;
+console.log(mongoURI)
 mongoose.connect(mongoURI, { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 mongoose.connection.on('error', error => console.log(error));
