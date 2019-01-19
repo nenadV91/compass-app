@@ -1,4 +1,4 @@
-# compass-app
+# compass-app [Demo](https://compass-app-demo.herokuapp.com/#/)
 React - node application demo
 
 ## Get started
