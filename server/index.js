@@ -13,6 +13,8 @@ dotenv.config();
 const {
   DB_HOST,
   DB_NAME,
+  DB_USERNAME,
+  DB_PASSWORD,
   NODE_ENV
 } = process.env;
 
@@ -27,8 +29,7 @@ if(!DB_NAME) {
 
 
 // Mongodb connection
-const mongoURI = `mongodb://${DB_HOST}/${DB_NAME}`;
-console.log(mongoURI)
+const mongoURI = `mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
 mongoose.connect(mongoURI, { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 mongoose.connection.on('error', error => console.log(error));
