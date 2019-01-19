@@ -12,11 +12,13 @@
     "mongoose": "^5.4.4"
   },
   "devDependencies": {
+    "apidoc": "^0.17.7",
     "nodemon": "^1.18.9"
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "docs": "apidoc -i routes/ -o ../docs/"
   },
   "author": "Nenad Vracar",
   "license": "ISC"

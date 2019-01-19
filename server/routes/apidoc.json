@@ -1,0 +1,7 @@
+{
+  "name": "compass",
+  "version": "0.1.0",
+  "description": "Documents for Compass app api.",
+  "title": "Compass api",
+  "url" : "localhost:4000"
+}
